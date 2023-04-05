@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Digital Clock</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        #clock {
+            padding-top: 25px;
+            width: 500px;
+            height: 100px;
+            text-align: center;
+            margin: auto;
+            background-color: #4BB543;
+            color: white;
+            font-size: 70px;
+            border-radius: 10px;
+        }
+
+        .div {
+            margin-top: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div">
+        <h1 id="clock"></h1>
+    </div>
+    <script>
+        function updateTime() {
+            let now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+            let amPM = 'AM';
+
+
+
+
+            if (hours >= 12) {
+                amPM = 'PM'
+            } else {
+                amPM = 'AM'
+            }
+
+            if (hours > 12) {
+                hours = hours - 12;
+            }
+
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+
+            if (hours == 0) {
+                hours = 12;
+            }
+
+
+
+            let timeString = hours + ":" + minutes + ":" + seconds + ' ' + amPM;
+            document.getElementById("clock").innerHTML = timeString;
+        }
+
+        // Call the updateTime function every second
+        setInterval(updateTime, 1000);
+
+        // Initialize the clock by calling the updateTime function once
+        updateTime();
+    </script>
+</body>
+
+</html>
